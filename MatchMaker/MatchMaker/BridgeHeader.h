@@ -6,8 +6,9 @@
 //  Copyright © 2015年 sue. All rights reserved.
 //
 
-#ifndef BridgeHeader_h
-#define BridgeHeader_h
+#ifndef MatchMaker_BridgeHeader_h
+#define MatchMaker_BridgeHeader_h
 
+#import "RESideMenu.h"
 
 #endif /* BridgeHeader_h */
