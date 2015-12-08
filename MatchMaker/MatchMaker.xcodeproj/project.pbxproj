@@ -7,17 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E8F4FFC9A1AD71B18F5F618 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7835478229665730D1BA2C6D /* libPods.a */; };
+		1B8CDD0FF27F1BE3A7DFB92A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A43D1F4AD31BE75CE6433F4 /* Pods.framework */; };
 		8012BA9C1C13F5DB00223428 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BA9B1C13F5DB00223428 /* MineViewController.swift */; };
 		8012BA9E1C13F68E00223428 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BA9D1C13F68E00223428 /* Constraint.swift */; };
+		8012BAA01C1521DF00223428 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BA9F1C1521DF00223428 /* MineCell.swift */; };
+		8012BAA21C153B8500223428 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BAA11C153B8500223428 /* Colors.swift */; };
+		8012BAA41C15819200223428 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BAA31C15819200223428 /* ProfileViewController.swift */; };
 		807BDD141C06F3A600B93B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD131C06F3A600B93B7D /* AppDelegate.swift */; };
 		807BDD191C06F3A600B93B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807BDD171C06F3A600B93B7D /* Main.storyboard */; };
 		807BDD1B1C06F3A600B93B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 807BDD1A1C06F3A600B93B7D /* Assets.xcassets */; };
 		807BDD1E1C06F3A600B93B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807BDD1C1C06F3A600B93B7D /* LaunchScreen.storyboard */; };
 		807BDD291C06F3A600B93B7D /* MatchMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD281C06F3A600B93B7D /* MatchMakerTests.swift */; };
 		807BDD341C06F3A600B93B7D /* MatchMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD331C06F3A600B93B7D /* MatchMakerUITests.swift */; };
+		80A2CFB21C167FFE00DAC07F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */; };
+		80A2CFB51C16851A00DAC07F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2CFB41C16851A00DAC07F /* String.swift */; };
+		80E252E51C16D95B00596EB4 /* CloudButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252DA1C16D95B00596EB4 /* CloudButton.m */; };
+		80E252E61C16D95B00596EB4 /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252DC1C16D95B00596EB4 /* CloudView.m */; };
+		80E252E71C16D95B00596EB4 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252E01C16D95B00596EB4 /* DBSphereView.m */; };
+		80E252E81C16D95B00596EB4 /* DCPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252E21C16D95B00596EB4 /* DCPathButton.m */; };
+		80E252E91C16D95B00596EB4 /* DCPathItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252E41C16D95B00596EB4 /* DCPathItemButton.m */; };
+		80E252EB1C16D9FB00596EB4 /* SphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */; };
+		80E252ED1C16DAAC00596EB4 /* SFPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EC1C16DAAC00596EB4 /* SFPatchView.swift */; };
+		80E252EF1C16DAD500596EB4 /* PatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EE1C16DAD500596EB4 /* PatchViewController.swift */; };
 		80E9FD721C12E188007457C3 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD711C12E188007457C3 /* SideMenuViewController.swift */; };
-		80E9FD771C12FB0B007457C3 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD761C12FB0B007457C3 /* LeftViewController.swift */; };
+		80E9FD771C12FB0B007457C3 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD761C12FB0B007457C3 /* IndexViewController.swift */; };
 		80E9FD7B1C13008E007457C3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD7A1C13008E007457C3 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,9 +53,12 @@
 
 /* Begin PBXFileReference section */
 		2F4C60417DE1DF55676794E6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		7835478229665730D1BA2C6D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A43D1F4AD31BE75CE6433F4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8012BA9B1C13F5DB00223428 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		8012BA9D1C13F68E00223428 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		8012BA9F1C1521DF00223428 /* MineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
+		8012BAA11C153B8500223428 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8012BAA31C15819200223428 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		807BDD101C06F3A600B93B7D /* MatchMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		807BDD131C06F3A600B93B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		807BDD181C06F3A600B93B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,9 +71,26 @@
 		807BDD2F1C06F3A600B93B7D /* MatchMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		807BDD331C06F3A600B93B7D /* MatchMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMakerUITests.swift; sourceTree = "<group>"; };
 		807BDD351C06F3A600B93B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		80A2CFB41C16851A00DAC07F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		80E252D91C16D95B00596EB4 /* CloudButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudButton.h; path = class/patch/CloudButton.h; sourceTree = "<group>"; };
+		80E252DA1C16D95B00596EB4 /* CloudButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudButton.m; path = class/patch/CloudButton.m; sourceTree = "<group>"; };
+		80E252DB1C16D95B00596EB4 /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = class/patch/CloudView.h; sourceTree = "<group>"; };
+		80E252DC1C16D95B00596EB4 /* CloudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudView.m; path = class/patch/CloudView.m; sourceTree = "<group>"; };
+		80E252DD1C16D95B00596EB4 /* DBMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMatrix.h; path = class/patch/DBMatrix.h; sourceTree = "<group>"; };
+		80E252DE1C16D95B00596EB4 /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPoint.h; path = class/patch/DBPoint.h; sourceTree = "<group>"; };
+		80E252DF1C16D95B00596EB4 /* DBSphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSphereView.h; path = class/patch/DBSphereView.h; sourceTree = "<group>"; };
+		80E252E01C16D95B00596EB4 /* DBSphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSphereView.m; path = class/patch/DBSphereView.m; sourceTree = "<group>"; };
+		80E252E11C16D95B00596EB4 /* DCPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCPathButton.h; path = class/patch/DCPathButton.h; sourceTree = "<group>"; };
+		80E252E21C16D95B00596EB4 /* DCPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCPathButton.m; path = class/patch/DCPathButton.m; sourceTree = "<group>"; };
+		80E252E31C16D95B00596EB4 /* DCPathItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCPathItemButton.h; path = class/patch/DCPathItemButton.h; sourceTree = "<group>"; };
+		80E252E41C16D95B00596EB4 /* DCPathItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCPathItemButton.m; path = class/patch/DCPathItemButton.m; sourceTree = "<group>"; };
+		80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereViewController.swift; sourceTree = "<group>"; };
+		80E252EC1C16DAAC00596EB4 /* SFPatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFPatchView.swift; sourceTree = "<group>"; };
+		80E252EE1C16DAD500596EB4 /* PatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchViewController.swift; sourceTree = "<group>"; };
 		80E9FD711C12E188007457C3 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		80E9FD731C12F7DE007457C3 /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
-		80E9FD761C12FB0B007457C3 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		80E9FD761C12FB0B007457C3 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		80E9FD7A1C13008E007457C3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A7FBFF6660660389DB1066C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E8F4FFC9A1AD71B18F5F618 /* libPods.a in Frameworks */,
+				1B8CDD0FF27F1BE3A7DFB92A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +124,7 @@
 		5235E721DF2DDB9935AFCFB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7835478229665730D1BA2C6D /* libPods.a */,
+				4A43D1F4AD31BE75CE6433F4 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +154,8 @@
 		807BDD121C06F3A600B93B7D /* MatchMaker */ = {
 			isa = PBXGroup;
 			children = (
+				80E252D71C16D92700596EB4 /* Vender */,
+				80A2CFB31C16850B00DAC07F /* Expand */,
 				807BDD441C06F9E400B93B7D /* Common */,
 				807BDD431C06F9DB00B93B7D /* Controller */,
 				807BDD421C06F9D100B93B7D /* View */,
@@ -163,7 +198,9 @@
 		807BDD421C06F9D100B93B7D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				80E252EC1C16DAAC00596EB4 /* SFPatchView.swift */,
 				80E9FD701C12E0D1007457C3 /* SideMenu */,
+				8012BA9F1C1521DF00223428 /* MineCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -171,9 +208,13 @@
 		807BDD431C06F9DB00B93B7D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				80E9FD761C12FB0B007457C3 /* LeftViewController.swift */,
+				80E9FD761C12FB0B007457C3 /* IndexViewController.swift */,
 				80E9FD7A1C13008E007457C3 /* HomeViewController.swift */,
 				8012BA9B1C13F5DB00223428 /* MineViewController.swift */,
+				8012BAA31C15819200223428 /* ProfileViewController.swift */,
+				80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */,
+				80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */,
+				80E252EE1C16DAD500596EB4 /* PatchViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -182,8 +223,44 @@
 			isa = PBXGroup;
 			children = (
 				8012BA9D1C13F68E00223428 /* Constraint.swift */,
+				8012BAA11C153B8500223428 /* Colors.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		80A2CFB31C16850B00DAC07F /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				80A2CFB41C16851A00DAC07F /* String.swift */,
+			);
+			name = Expand;
+			sourceTree = "<group>";
+		};
+		80E252D71C16D92700596EB4 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				80E252D81C16D93400596EB4 /* patch */,
+			);
+			name = Vender;
+			sourceTree = "<group>";
+		};
+		80E252D81C16D93400596EB4 /* patch */ = {
+			isa = PBXGroup;
+			children = (
+				80E252D91C16D95B00596EB4 /* CloudButton.h */,
+				80E252DA1C16D95B00596EB4 /* CloudButton.m */,
+				80E252DB1C16D95B00596EB4 /* CloudView.h */,
+				80E252DC1C16D95B00596EB4 /* CloudView.m */,
+				80E252DD1C16D95B00596EB4 /* DBMatrix.h */,
+				80E252DE1C16D95B00596EB4 /* DBPoint.h */,
+				80E252DF1C16D95B00596EB4 /* DBSphereView.h */,
+				80E252E01C16D95B00596EB4 /* DBSphereView.m */,
+				80E252E11C16D95B00596EB4 /* DCPathButton.h */,
+				80E252E21C16D95B00596EB4 /* DCPathButton.m */,
+				80E252E31C16D95B00596EB4 /* DCPathItemButton.h */,
+				80E252E41C16D95B00596EB4 /* DCPathItemButton.m */,
+			);
+			name = patch;
 			sourceTree = "<group>";
 		};
 		80E9FD701C12E0D1007457C3 /* SideMenu */ = {
@@ -386,10 +463,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				8012BA9E1C13F68E00223428 /* Constraint.swift in Sources */,
+				80A2CFB51C16851A00DAC07F /* String.swift in Sources */,
+				8012BAA21C153B8500223428 /* Colors.swift in Sources */,
+				80E252E81C16D95B00596EB4 /* DCPathButton.m in Sources */,
+				80E252E71C16D95B00596EB4 /* DBSphereView.m in Sources */,
+				80E252E51C16D95B00596EB4 /* CloudButton.m in Sources */,
 				80E9FD721C12E188007457C3 /* SideMenuViewController.swift in Sources */,
+				80E252EB1C16D9FB00596EB4 /* SphereViewController.swift in Sources */,
 				807BDD141C06F3A600B93B7D /* AppDelegate.swift in Sources */,
-				80E9FD771C12FB0B007457C3 /* LeftViewController.swift in Sources */,
+				8012BAA01C1521DF00223428 /* MineCell.swift in Sources */,
+				80E9FD771C12FB0B007457C3 /* IndexViewController.swift in Sources */,
+				80E252EF1C16DAD500596EB4 /* PatchViewController.swift in Sources */,
+				8012BAA41C15819200223428 /* ProfileViewController.swift in Sources */,
 				80E9FD7B1C13008E007457C3 /* HomeViewController.swift in Sources */,
+				80E252E91C16D95B00596EB4 /* DCPathItemButton.m in Sources */,
+				80E252E61C16D95B00596EB4 /* CloudView.m in Sources */,
+				80A2CFB21C167FFE00DAC07F /* ChatViewController.swift in Sources */,
+				80E252ED1C16DAAC00596EB4 /* SFPatchView.swift in Sources */,
 				8012BA9C1C13F5DB00223428 /* MineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

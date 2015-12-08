@@ -9,6 +9,7 @@
 #ifndef MatchMaker_BridgeHeader_h
 #define MatchMaker_BridgeHeader_h
 
-#import "RESideMenu.h"
+#import "DBSphereView.h"
+#import "CloudView.h"
 
 #endif /* BridgeHeader_h */

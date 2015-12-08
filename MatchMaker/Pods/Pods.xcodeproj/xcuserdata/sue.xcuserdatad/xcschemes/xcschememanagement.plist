@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods.xcscheme</key>
+		<key>MediumMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RESideMenu.xcscheme</key>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>874DF57D55A6E01FB780EE771D2972BB</key>
+		<key>7CC4E7D1CEC9E868675956B1DAA445EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90F5D48D66789AB794E52921E14680CA</key>
+		<key>9CEAD0495F88A5458B3D7F8570A0EA3E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

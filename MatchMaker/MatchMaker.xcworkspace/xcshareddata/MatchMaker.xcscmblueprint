@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "29338C5010EBF3AC37F16F1DE31314F8514907EB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "29338C5010EBF3AC37F16F1DE31314F8514907EB" : 0,
+    "06B08C0A9D479E7A517F56AB1B1185642AD4AE2D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "80E3690A-FFBA-4FA0-AEA4-D0282C9871E4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "29338C5010EBF3AC37F16F1DE31314F8514907EB" : "matchmaker\/",
+    "06B08C0A9D479E7A517F56AB1B1185642AD4AE2D" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MatchMaker",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MatchMaker\/MatchMaker.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/suesu123456\/-swift-alimonyCal.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "06B08C0A9D479E7A517F56AB1B1185642AD4AE2D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/suesu123456\/MatchMaker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "29338C5010EBF3AC37F16F1DE31314F8514907EB"
+    }
+  ]
+}
