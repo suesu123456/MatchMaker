@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B8CDD0FF27F1BE3A7DFB92A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A43D1F4AD31BE75CE6433F4 /* Pods.framework */; };
+		1B8CDD0FF27F1BE3A7DFB92A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A43D1F4AD31BE75CE6433F4 /* Pods.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		8012BA9C1C13F5DB00223428 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BA9B1C13F5DB00223428 /* MineViewController.swift */; };
 		8012BA9E1C13F68E00223428 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BA9D1C13F68E00223428 /* Constraint.swift */; };
 		8012BAA01C1521DF00223428 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BA9F1C1521DF00223428 /* MineCell.swift */; };
 		8012BAA21C153B8500223428 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BAA11C153B8500223428 /* Colors.swift */; };
 		8012BAA41C15819200223428 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012BAA31C15819200223428 /* ProfileViewController.swift */; };
+		802E7C141C190D6F003D5428 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E7C131C190D6F003D5428 /* LoginViewController.swift */; };
+		802E7C161C1915BC003D5428 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E7C151C1915BC003D5428 /* CardView.swift */; };
+		802E7C1A1C19168C003D5428 /* uber-video-welcome.gif in Resources */ = {isa = PBXBuildFile; fileRef = 802E7C181C19168C003D5428 /* uber-video-welcome.gif */; };
+		802E7C1B1C19168C003D5428 /* welcome_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 802E7C191C19168C003D5428 /* welcome_video.mp4 */; };
+		8037E2761C191E3A009559B3 /* NetBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8037E2751C191E3A009559B3 /* NetBase.swift */; };
 		807BDD141C06F3A600B93B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD131C06F3A600B93B7D /* AppDelegate.swift */; };
 		807BDD191C06F3A600B93B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807BDD171C06F3A600B93B7D /* Main.storyboard */; };
 		807BDD1B1C06F3A600B93B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 807BDD1A1C06F3A600B93B7D /* Assets.xcassets */; };
@@ -21,17 +26,33 @@
 		807BDD341C06F3A600B93B7D /* MatchMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD331C06F3A600B93B7D /* MatchMakerUITests.swift */; };
 		80A2CFB21C167FFE00DAC07F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */; };
 		80A2CFB51C16851A00DAC07F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2CFB41C16851A00DAC07F /* String.swift */; };
-		80E252E51C16D95B00596EB4 /* CloudButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252DA1C16D95B00596EB4 /* CloudButton.m */; };
-		80E252E61C16D95B00596EB4 /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252DC1C16D95B00596EB4 /* CloudView.m */; };
-		80E252E71C16D95B00596EB4 /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252E01C16D95B00596EB4 /* DBSphereView.m */; };
-		80E252E81C16D95B00596EB4 /* DCPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252E21C16D95B00596EB4 /* DCPathButton.m */; };
-		80E252E91C16D95B00596EB4 /* DCPathItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E252E41C16D95B00596EB4 /* DCPathItemButton.m */; };
 		80E252EB1C16D9FB00596EB4 /* SphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */; };
 		80E252ED1C16DAAC00596EB4 /* SFPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EC1C16DAAC00596EB4 /* SFPatchView.swift */; };
 		80E252EF1C16DAD500596EB4 /* PatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EE1C16DAD500596EB4 /* PatchViewController.swift */; };
 		80E9FD721C12E188007457C3 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD711C12E188007457C3 /* SideMenuViewController.swift */; };
 		80E9FD771C12FB0B007457C3 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD761C12FB0B007457C3 /* IndexViewController.swift */; };
 		80E9FD7B1C13008E007457C3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9FD7A1C13008E007457C3 /* HomeViewController.swift */; };
+		80EAE28E1C20F76B00297C9E /* CloudButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2831C20F76B00297C9E /* CloudButton.m */; };
+		80EAE28F1C20F76B00297C9E /* CloudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2851C20F76B00297C9E /* CloudView.m */; };
+		80EAE2901C20F76B00297C9E /* DBSphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2891C20F76B00297C9E /* DBSphereView.m */; };
+		80EAE2911C20F76B00297C9E /* DCPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE28B1C20F76B00297C9E /* DCPathButton.m */; };
+		80EAE2921C20F76B00297C9E /* DCPathItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE28D1C20F76B00297C9E /* DCPathItemButton.m */; };
+		80EAE2A11C20F7B300297C9E /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2931C20F7B300297C9E /* Alamofire.swift */; };
+		80EAE2A21C20F7B300297C9E /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2941C20F7B300297C9E /* Download.swift */; };
+		80EAE2A31C20F7B300297C9E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2951C20F7B300297C9E /* Error.swift */; };
+		80EAE2A41C20F7B300297C9E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2961C20F7B300297C9E /* Manager.swift */; };
+		80EAE2A51C20F7B300297C9E /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2971C20F7B300297C9E /* MultipartFormData.swift */; };
+		80EAE2A61C20F7B300297C9E /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2981C20F7B300297C9E /* ParameterEncoding.swift */; };
+		80EAE2A71C20F7B300297C9E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2991C20F7B300297C9E /* Request.swift */; };
+		80EAE2A81C20F7B300297C9E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE29A1C20F7B300297C9E /* Response.swift */; };
+		80EAE2A91C20F7B300297C9E /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE29B1C20F7B300297C9E /* ResponseSerialization.swift */; };
+		80EAE2AA1C20F7B300297C9E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE29C1C20F7B300297C9E /* Result.swift */; };
+		80EAE2AB1C20F7B300297C9E /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE29D1C20F7B300297C9E /* ServerTrustPolicy.swift */; };
+		80EAE2AC1C20F7B300297C9E /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE29E1C20F7B300297C9E /* Stream.swift */; };
+		80EAE2AD1C20F7B300297C9E /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE29F1C20F7B300297C9E /* Upload.swift */; };
+		80EAE2AE1C20F7B300297C9E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2A01C20F7B300297C9E /* Validation.swift */; };
+		80EAE2B01C21354500297C9E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2AF1C21354500297C9E /* UserModel.swift */; };
+		80EAE2B21C2157A000297C9E /* NetUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EAE2B11C2157A000297C9E /* NetUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +80,13 @@
 		8012BA9F1C1521DF00223428 /* MineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		8012BAA11C153B8500223428 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8012BAA31C15819200223428 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		802E7C131C190D6F003D5428 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		802E7C151C1915BC003D5428 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		802E7C181C19168C003D5428 /* uber-video-welcome.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "uber-video-welcome.gif"; sourceTree = "<group>"; };
+		802E7C191C19168C003D5428 /* welcome_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = welcome_video.mp4; sourceTree = "<group>"; };
+		803413621C191F680061B076 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		803413641C19209F0061B076 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		8037E2751C191E3A009559B3 /* NetBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetBase.swift; sourceTree = "<group>"; };
 		807BDD101C06F3A600B93B7D /* MatchMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		807BDD131C06F3A600B93B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		807BDD181C06F3A600B93B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,18 +101,6 @@
 		807BDD351C06F3A600B93B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		80A2CFB41C16851A00DAC07F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		80E252D91C16D95B00596EB4 /* CloudButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudButton.h; path = class/patch/CloudButton.h; sourceTree = "<group>"; };
-		80E252DA1C16D95B00596EB4 /* CloudButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudButton.m; path = class/patch/CloudButton.m; sourceTree = "<group>"; };
-		80E252DB1C16D95B00596EB4 /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = class/patch/CloudView.h; sourceTree = "<group>"; };
-		80E252DC1C16D95B00596EB4 /* CloudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudView.m; path = class/patch/CloudView.m; sourceTree = "<group>"; };
-		80E252DD1C16D95B00596EB4 /* DBMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMatrix.h; path = class/patch/DBMatrix.h; sourceTree = "<group>"; };
-		80E252DE1C16D95B00596EB4 /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPoint.h; path = class/patch/DBPoint.h; sourceTree = "<group>"; };
-		80E252DF1C16D95B00596EB4 /* DBSphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSphereView.h; path = class/patch/DBSphereView.h; sourceTree = "<group>"; };
-		80E252E01C16D95B00596EB4 /* DBSphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSphereView.m; path = class/patch/DBSphereView.m; sourceTree = "<group>"; };
-		80E252E11C16D95B00596EB4 /* DCPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCPathButton.h; path = class/patch/DCPathButton.h; sourceTree = "<group>"; };
-		80E252E21C16D95B00596EB4 /* DCPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCPathButton.m; path = class/patch/DCPathButton.m; sourceTree = "<group>"; };
-		80E252E31C16D95B00596EB4 /* DCPathItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCPathItemButton.h; path = class/patch/DCPathItemButton.h; sourceTree = "<group>"; };
-		80E252E41C16D95B00596EB4 /* DCPathItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCPathItemButton.m; path = class/patch/DCPathItemButton.m; sourceTree = "<group>"; };
 		80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereViewController.swift; sourceTree = "<group>"; };
 		80E252EC1C16DAAC00596EB4 /* SFPatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFPatchView.swift; sourceTree = "<group>"; };
 		80E252EE1C16DAD500596EB4 /* PatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +108,34 @@
 		80E9FD731C12F7DE007457C3 /* BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
 		80E9FD761C12FB0B007457C3 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		80E9FD7A1C13008E007457C3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		80EAE2821C20F76B00297C9E /* CloudButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudButton.h; path = class/patch/CloudButton.h; sourceTree = "<group>"; };
+		80EAE2831C20F76B00297C9E /* CloudButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudButton.m; path = class/patch/CloudButton.m; sourceTree = "<group>"; };
+		80EAE2841C20F76B00297C9E /* CloudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudView.h; path = class/patch/CloudView.h; sourceTree = "<group>"; };
+		80EAE2851C20F76B00297C9E /* CloudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudView.m; path = class/patch/CloudView.m; sourceTree = "<group>"; };
+		80EAE2861C20F76B00297C9E /* DBMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBMatrix.h; path = class/patch/DBMatrix.h; sourceTree = "<group>"; };
+		80EAE2871C20F76B00297C9E /* DBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPoint.h; path = class/patch/DBPoint.h; sourceTree = "<group>"; };
+		80EAE2881C20F76B00297C9E /* DBSphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBSphereView.h; path = class/patch/DBSphereView.h; sourceTree = "<group>"; };
+		80EAE2891C20F76B00297C9E /* DBSphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBSphereView.m; path = class/patch/DBSphereView.m; sourceTree = "<group>"; };
+		80EAE28A1C20F76B00297C9E /* DCPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCPathButton.h; path = class/patch/DCPathButton.h; sourceTree = "<group>"; };
+		80EAE28B1C20F76B00297C9E /* DCPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCPathButton.m; path = class/patch/DCPathButton.m; sourceTree = "<group>"; };
+		80EAE28C1C20F76B00297C9E /* DCPathItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCPathItemButton.h; path = class/patch/DCPathItemButton.h; sourceTree = "<group>"; };
+		80EAE28D1C20F76B00297C9E /* DCPathItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCPathItemButton.m; path = class/patch/DCPathItemButton.m; sourceTree = "<group>"; };
+		80EAE2931C20F7B300297C9E /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = class/alamofire/Alamofire.swift; sourceTree = "<group>"; };
+		80EAE2941C20F7B300297C9E /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Download.swift; path = class/alamofire/Download.swift; sourceTree = "<group>"; };
+		80EAE2951C20F7B300297C9E /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = class/alamofire/Error.swift; sourceTree = "<group>"; };
+		80EAE2961C20F7B300297C9E /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = class/alamofire/Manager.swift; sourceTree = "<group>"; };
+		80EAE2971C20F7B300297C9E /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = class/alamofire/MultipartFormData.swift; sourceTree = "<group>"; };
+		80EAE2981C20F7B300297C9E /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = class/alamofire/ParameterEncoding.swift; sourceTree = "<group>"; };
+		80EAE2991C20F7B300297C9E /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = class/alamofire/Request.swift; sourceTree = "<group>"; };
+		80EAE29A1C20F7B300297C9E /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = class/alamofire/Response.swift; sourceTree = "<group>"; };
+		80EAE29B1C20F7B300297C9E /* ResponseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = class/alamofire/ResponseSerialization.swift; sourceTree = "<group>"; };
+		80EAE29C1C20F7B300297C9E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = class/alamofire/Result.swift; sourceTree = "<group>"; };
+		80EAE29D1C20F7B300297C9E /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = class/alamofire/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		80EAE29E1C20F7B300297C9E /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = class/alamofire/Stream.swift; sourceTree = "<group>"; };
+		80EAE29F1C20F7B300297C9E /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = class/alamofire/Upload.swift; sourceTree = "<group>"; };
+		80EAE2A01C20F7B300297C9E /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = class/alamofire/Validation.swift; sourceTree = "<group>"; };
+		80EAE2AF1C21354500297C9E /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		80EAE2B11C2157A000297C9E /* NetUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetUrl.swift; sourceTree = "<group>"; };
 		A7FBFF6660660389DB1066C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,9 +168,48 @@
 		5235E721DF2DDB9935AFCFB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				803413641C19209F0061B076 /* Alamofire.framework */,
+				803413621C191F680061B076 /* Alamofire.framework */,
 				4A43D1F4AD31BE75CE6433F4 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		802E7C171C191675003D5428 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				802E7C181C19168C003D5428 /* uber-video-welcome.gif */,
+				802E7C191C19168C003D5428 /* welcome_video.mp4 */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+		803EA1D81C19251E0060FF57 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				80EAE2931C20F7B300297C9E /* Alamofire.swift */,
+				80EAE2941C20F7B300297C9E /* Download.swift */,
+				80EAE2951C20F7B300297C9E /* Error.swift */,
+				80EAE2961C20F7B300297C9E /* Manager.swift */,
+				80EAE2971C20F7B300297C9E /* MultipartFormData.swift */,
+				80EAE2981C20F7B300297C9E /* ParameterEncoding.swift */,
+				80EAE2991C20F7B300297C9E /* Request.swift */,
+				80EAE29A1C20F7B300297C9E /* Response.swift */,
+				80EAE29B1C20F7B300297C9E /* ResponseSerialization.swift */,
+				80EAE29C1C20F7B300297C9E /* Result.swift */,
+				80EAE29D1C20F7B300297C9E /* ServerTrustPolicy.swift */,
+				80EAE29E1C20F7B300297C9E /* Stream.swift */,
+				80EAE29F1C20F7B300297C9E /* Upload.swift */,
+				80EAE2A01C20F7B300297C9E /* Validation.swift */,
+			);
+			name = Alamofire;
+			sourceTree = "<group>";
+		};
+		8066CC7F1C2003E4005EDF66 /* PromiseKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PromiseKit;
 			sourceTree = "<group>";
 		};
 		807BDD071C06F3A600B93B7D = {
@@ -154,6 +237,7 @@
 		807BDD121C06F3A600B93B7D /* MatchMaker */ = {
 			isa = PBXGroup;
 			children = (
+				802E7C171C191675003D5428 /* source */,
 				80E252D71C16D92700596EB4 /* Vender */,
 				80A2CFB31C16850B00DAC07F /* Expand */,
 				807BDD441C06F9E400B93B7D /* Common */,
@@ -191,6 +275,7 @@
 		807BDD411C06F9CC00B93B7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80EAE2AF1C21354500297C9E /* UserModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,6 +286,7 @@
 				80E252EC1C16DAAC00596EB4 /* SFPatchView.swift */,
 				80E9FD701C12E0D1007457C3 /* SideMenu */,
 				8012BA9F1C1521DF00223428 /* MineCell.swift */,
+				802E7C151C1915BC003D5428 /* CardView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -215,6 +301,7 @@
 				80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */,
 				80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */,
 				80E252EE1C16DAD500596EB4 /* PatchViewController.swift */,
+				802E7C131C190D6F003D5428 /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -224,6 +311,8 @@
 			children = (
 				8012BA9D1C13F68E00223428 /* Constraint.swift */,
 				8012BAA11C153B8500223428 /* Colors.swift */,
+				8037E2751C191E3A009559B3 /* NetBase.swift */,
+				80EAE2B11C2157A000297C9E /* NetUrl.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -239,6 +328,8 @@
 		80E252D71C16D92700596EB4 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				8066CC7F1C2003E4005EDF66 /* PromiseKit */,
+				803EA1D81C19251E0060FF57 /* Alamofire */,
 				80E252D81C16D93400596EB4 /* patch */,
 			);
 			name = Vender;
@@ -247,18 +338,18 @@
 		80E252D81C16D93400596EB4 /* patch */ = {
 			isa = PBXGroup;
 			children = (
-				80E252D91C16D95B00596EB4 /* CloudButton.h */,
-				80E252DA1C16D95B00596EB4 /* CloudButton.m */,
-				80E252DB1C16D95B00596EB4 /* CloudView.h */,
-				80E252DC1C16D95B00596EB4 /* CloudView.m */,
-				80E252DD1C16D95B00596EB4 /* DBMatrix.h */,
-				80E252DE1C16D95B00596EB4 /* DBPoint.h */,
-				80E252DF1C16D95B00596EB4 /* DBSphereView.h */,
-				80E252E01C16D95B00596EB4 /* DBSphereView.m */,
-				80E252E11C16D95B00596EB4 /* DCPathButton.h */,
-				80E252E21C16D95B00596EB4 /* DCPathButton.m */,
-				80E252E31C16D95B00596EB4 /* DCPathItemButton.h */,
-				80E252E41C16D95B00596EB4 /* DCPathItemButton.m */,
+				80EAE2821C20F76B00297C9E /* CloudButton.h */,
+				80EAE2831C20F76B00297C9E /* CloudButton.m */,
+				80EAE2841C20F76B00297C9E /* CloudView.h */,
+				80EAE2851C20F76B00297C9E /* CloudView.m */,
+				80EAE2861C20F76B00297C9E /* DBMatrix.h */,
+				80EAE2871C20F76B00297C9E /* DBPoint.h */,
+				80EAE2881C20F76B00297C9E /* DBSphereView.h */,
+				80EAE2891C20F76B00297C9E /* DBSphereView.m */,
+				80EAE28A1C20F76B00297C9E /* DCPathButton.h */,
+				80EAE28B1C20F76B00297C9E /* DCPathButton.m */,
+				80EAE28C1C20F76B00297C9E /* DCPathItemButton.h */,
+				80EAE28D1C20F76B00297C9E /* DCPathItemButton.m */,
 			);
 			name = patch;
 			sourceTree = "<group>";
@@ -387,7 +478,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802E7C1B1C19168C003D5428 /* welcome_video.mp4 in Resources */,
 				807BDD1E1C06F3A600B93B7D /* LaunchScreen.storyboard in Resources */,
+				802E7C1A1C19168C003D5428 /* uber-video-welcome.gif in Resources */,
 				807BDD1B1C06F3A600B93B7D /* Assets.xcassets in Resources */,
 				807BDD191C06F3A600B93B7D /* Main.storyboard in Resources */,
 			);
@@ -462,24 +555,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80EAE2A11C20F7B300297C9E /* Alamofire.swift in Sources */,
+				80EAE2921C20F76B00297C9E /* DCPathItemButton.m in Sources */,
+				80EAE2B21C2157A000297C9E /* NetUrl.swift in Sources */,
 				8012BA9E1C13F68E00223428 /* Constraint.swift in Sources */,
 				80A2CFB51C16851A00DAC07F /* String.swift in Sources */,
+				80EAE2A81C20F7B300297C9E /* Response.swift in Sources */,
 				8012BAA21C153B8500223428 /* Colors.swift in Sources */,
-				80E252E81C16D95B00596EB4 /* DCPathButton.m in Sources */,
-				80E252E71C16D95B00596EB4 /* DBSphereView.m in Sources */,
-				80E252E51C16D95B00596EB4 /* CloudButton.m in Sources */,
+				80EAE2AB1C20F7B300297C9E /* ServerTrustPolicy.swift in Sources */,
+				80EAE2B01C21354500297C9E /* UserModel.swift in Sources */,
+				80EAE2AA1C20F7B300297C9E /* Result.swift in Sources */,
+				80EAE28E1C20F76B00297C9E /* CloudButton.m in Sources */,
+				80EAE2A71C20F7B300297C9E /* Request.swift in Sources */,
 				80E9FD721C12E188007457C3 /* SideMenuViewController.swift in Sources */,
+				80EAE2A41C20F7B300297C9E /* Manager.swift in Sources */,
+				802E7C161C1915BC003D5428 /* CardView.swift in Sources */,
 				80E252EB1C16D9FB00596EB4 /* SphereViewController.swift in Sources */,
+				80EAE2A21C20F7B300297C9E /* Download.swift in Sources */,
+				802E7C141C190D6F003D5428 /* LoginViewController.swift in Sources */,
 				807BDD141C06F3A600B93B7D /* AppDelegate.swift in Sources */,
+				80EAE2901C20F76B00297C9E /* DBSphereView.m in Sources */,
+				80EAE2A61C20F7B300297C9E /* ParameterEncoding.swift in Sources */,
 				8012BAA01C1521DF00223428 /* MineCell.swift in Sources */,
+				80EAE2A51C20F7B300297C9E /* MultipartFormData.swift in Sources */,
+				80EAE2AD1C20F7B300297C9E /* Upload.swift in Sources */,
+				80EAE2AE1C20F7B300297C9E /* Validation.swift in Sources */,
+				80EAE2AC1C20F7B300297C9E /* Stream.swift in Sources */,
 				80E9FD771C12FB0B007457C3 /* IndexViewController.swift in Sources */,
 				80E252EF1C16DAD500596EB4 /* PatchViewController.swift in Sources */,
 				8012BAA41C15819200223428 /* ProfileViewController.swift in Sources */,
+				80EAE28F1C20F76B00297C9E /* CloudView.m in Sources */,
+				80EAE2A91C20F7B300297C9E /* ResponseSerialization.swift in Sources */,
 				80E9FD7B1C13008E007457C3 /* HomeViewController.swift in Sources */,
-				80E252E91C16D95B00596EB4 /* DCPathItemButton.m in Sources */,
-				80E252E61C16D95B00596EB4 /* CloudView.m in Sources */,
 				80A2CFB21C167FFE00DAC07F /* ChatViewController.swift in Sources */,
 				80E252ED1C16DAAC00596EB4 /* SFPatchView.swift in Sources */,
+				80EAE2911C20F76B00297C9E /* DCPathButton.m in Sources */,
+				8037E2761C191E3A009559B3 /* NetBase.swift in Sources */,
+				80EAE2A31C20F7B300297C9E /* Error.swift in Sources */,
 				8012BA9C1C13F5DB00223428 /* MineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +735,10 @@
 			baseConfigurationReference = 2F4C60417DE1DF55676794E6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = MatchMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suesu.MatchMaker;
@@ -636,6 +752,10 @@
 			baseConfigurationReference = A7FBFF6660660389DB1066C4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = MatchMaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suesu.MatchMaker;

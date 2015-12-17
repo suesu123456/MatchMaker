@@ -84,8 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/MediumMenu.framework"
+  install_framework "Pods/OMGHTTPURLRQ.framework"
+  install_framework "Pods/PromiseKit.framework"
+  install_framework "Pods/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/MediumMenu.framework"
+  install_framework "Pods/OMGHTTPURLRQ.framework"
+  install_framework "Pods/PromiseKit.framework"
+  install_framework "Pods/SwiftyJSON.framework"
 fi
