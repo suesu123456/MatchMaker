@@ -17,7 +17,8 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
     var delegate: menuDelegate?
-    var titleArray: [[String:[JSON]]] = [["Boys":[]],[["Girls": []]]]
+    var titleArray: [String] = ["Boys", "Girls"]
+    var resultArray: [[JSON]] = [[], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +38,12 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
         NetBase.postByUser(para, url: NetUrl.getFriends).then{ (json) -> Void in
             for (index, subJson): (String, JSON) in json {
                 if subJson["sex"] == 0 { //男生
-                    self.titleArray[0].append(subJson)
+                     self.resultArray[0].append(subJson)
                 }else{
-                    self.titleArray[1].append(subJson)
+                     self.resultArray[0].append(subJson)
                 }
             }
-           
+            self.tableView.reloadData()
             //将取回的数据男女分类
         }.error { (error) -> Void in
             print(error)
@@ -60,7 +61,7 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return titleArray[section]
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return resultArray[section].count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -71,7 +72,10 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell?.imageView?.image = UIImage(named: "photo_sue")
         cell?.imageView?.layer.masksToBounds = true
         cell?.imageView?.layer.cornerRadius = (cell?.imageView?.frame.width)! / 2
-        cell!.textLabel?.text = "sue"//titleArray[indexPath.row]
+        if resultArray[indexPath.section].count > 0 {
+            let json: JSON = resultArray[indexPath.section][indexPath.row]
+            cell!.textLabel?.text = json["name"].string
+        }
         return cell!
     }
     
