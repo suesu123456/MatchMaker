@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Socket_IO_Client_Swift
+import SwiftyJSON
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var keyBoardView: UIView!
+    
+    var socket: SocketIOClient!
+    var socketid: String = ""
+    
     var contentArray = [["peach","你好"],["sue","我"],["peach","你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？"],["peach","helloskfksdhfjksdhfjksdhfjkdshfjkdh"],["peach","你好"],["sue","我"],["peach","你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？"],["peach","helloskfksdhfjksdhfjksdhfjkdshfjkdh"]]
     var avaWidth: CGFloat = 50 //头像大小
     
@@ -21,6 +27,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.initViews()
+        self.initSocket()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
@@ -37,6 +44,47 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         textView.layer.cornerRadius = 5.0
     }
     
+    func initSocket() {
+        socket = SocketIOClient(socketURL: "http://localhost:3008", options: [.Log(true), .ForceWebsockets(true)])
+        socket.on("connect") {data, ack in
+            self.socket.emit("newUser", "1")
+            self.socket.on("socketId"){(data, ack) -> Void in
+                self.socketid = String(data)
+            }
+        }
+        socket.connect()
+       
+        socket.on("receive") { (data, ack) -> Void in
+            var arrayTemp: [String] = []
+            arrayTemp.append("peach")
+            arrayTemp.append(String(data))
+            
+            self.contentArray.append(arrayTemp)
+            self.tableView.reloadData()
+        }
+        
+
+    }
+    //点击了发送消息
+    @IBAction func sendMessage(sender: AnyObject) {
+        //空的不发送
+        if textView.text.isEmpty {
+            return
+        }
+        var arrayTemp: [String] = []
+        arrayTemp.append("sue")
+        arrayTemp.append(textView.text)
+
+        self.contentArray.append(arrayTemp)
+        self.tableView.reloadData()
+        var to = "2"
+        socket.emit("message", [textView.text, self.socketid, to])
+            
+        self.view.endEditing(true)
+        textView.text = ""
+        
+        
+    }
     //泡泡文本
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView{
         

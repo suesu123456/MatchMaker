@@ -20,12 +20,14 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (3.0.0):
     - PromiseKit/CorePromise
+  - Socket.IO-Client-Swift (4.1.5)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.1.3)
   - MediumMenu
   - PromiseKit (~> 3.0.0)
+  - Socket.IO-Client-Swift (~> 4.1.4)
   - SwiftyJSON (~> 2.3.2)
 
 SPEC CHECKSUMS:
@@ -33,6 +35,7 @@ SPEC CHECKSUMS:
   MediumMenu: a9c7f71b5598a6dbc9f71d7b5fc1b1f211e61036
   OMGHTTPURLRQ: 8376dc887d76a5a7e2a67881dc788f917a2f437c
   PromiseKit: 665540a1eb43156446872dcf49ed7dee6ebbe13b
+  Socket.IO-Client-Swift: 18ba96af2ae0dd3e7311036e86bf09805643d472
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

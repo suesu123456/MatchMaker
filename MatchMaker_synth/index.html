@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+
+  <script>
+
+  var pathName = document.location.pathname; 
+
+  </script>
+
+    <script src="http://localhost:3009/jquery/dist/jquery.min.js"></script>
+
+    <script src="http://localhost:3009/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+
+    <script>
+
+        $(function(){
+
+            var socket = io.connect("http://localhost:3008");
+
+       
+
+        //var sid = socket.id; //socket.id 直接获取不到
+
+        var pathName = document.location.pathname; 
+
+       
+
+        //var sid = 'abc';
+
+            //socket.emit('message',sid); //给服务器发起广播
+
+            
+
+            //socket.on('connect', function (data) {
+
+               // console.log(data);  
+
+            //});
+
+            
+
+             $("#send").click(function(e){
+
+        
+
+                var from = '2',//$('#user_name').val(),
+
+                    msg  = $('#message').val(),
+
+                    to   = '1',//$('#to').val(),
+
+                 $message_list = $('#message_list');
+
+
+
+                 //新增用户
+                 var socketId;
+                 socket.emit('newUser',from);
+                 socket.on('socketId', function(data){
+                    socketId = data;
+                    console.log(socketId);
+                    socket.emit('message',['是的恢复健康水电费教科书的回复',socketId,to]);
+                 });
+
+                //发送消息
+                 
+
+                 
+
+                 //接收消息
+
+                 socket.on('receive', function (data) {
+
+                    $message_list.append('<li>'+to+'说'+data+'</li><li>');
+
+                 });
+
+                 
+
+              //    socket.on('sendSid', function (data) {
+
+              // $message_list.append('<li>'+to+'说'+data.mess+'</li><li>');
+
+// });
+
+                 //window.location.reload()
+
+             });
+
+        });
+
+    </script>
+
+ 
+
+ </head>
+
+ <body>
+
+    姓名:<input id="user_name" type="text"><br>
+
+    发送给：<input type="text" id="to"><br>
+
+    消息内容:<input type="text" id="message"><button type="button" id="send">发送</button>
+
+    <ul id="message_list">
+
+         
+
+    </ul>
+
+  <li></li>
+
+ </body>
+
+ 
+
+</html>

@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/MediumMenu.framework"
   install_framework "Pods/OMGHTTPURLRQ.framework"
   install_framework "Pods/PromiseKit.framework"
+  install_framework "Pods/Socket_IO_Client_Swift.framework"
   install_framework "Pods/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/MediumMenu.framework"
   install_framework "Pods/OMGHTTPURLRQ.framework"
   install_framework "Pods/PromiseKit.framework"
+  install_framework "Pods/Socket_IO_Client_Swift.framework"
   install_framework "Pods/SwiftyJSON.framework"
 fi
