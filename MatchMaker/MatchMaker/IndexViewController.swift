@@ -27,6 +27,8 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.dataSource = self
         self.tableView.tableHeaderView = UIView()
         self.tableView.tableFooterView = UIView()
+        Socket.sharedInstance.getidFromHttp()
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-
+import JGProgressHUD
 
 
 enum currentStatus {
@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var playerView: UIView!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var regBtn: UIButton!
+    
+    var hud: JGProgressHUD = JGProgressHUD(style: .ExtraLight)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initViews()
@@ -146,9 +148,15 @@ class LoginViewController: UIViewController {
                 return
             }
             let para:[String: AnyObject] = ["phone":phone!, "password":pwd! ]
-            NetBase.login(para).then{(json) in
-                UserModel.saveUserData(json)
-            }.error{ (error) in
+            hud.textLabel.text = "Loading"
+            hud.showInView(self.view)
+            NetBase.login(para).then{(json) -> Void in
+                self.hud.hidden = true
+                UserModel.saveUserData(json )
+                let home = self.storyboard?.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+                self.presentViewController(home, animated: true, completion: nil)
+            }.error{ (error) -> Void in
+                self.hud.hidden = true
                 print(error)
             }
         }
@@ -156,8 +164,6 @@ class LoginViewController: UIViewController {
     @IBAction func signClick(sender: AnyObject) {
         
     }
-  
-    
     func transitionToNewStatus(newStatus: currentStatus) {
         showCardView()
     }

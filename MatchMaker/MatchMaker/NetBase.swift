@@ -28,7 +28,7 @@ class NetBase: NSObject {
     static func postByUser(para: [String: AnyObject], url: String) -> Promise<JSON> {
         return Promise<JSON> {(fullfile, reject) -> Void in
             //带上token
-            let token: String = String(UserModel.getUserInfo("userId"))
+            let token: String = String(UserModel.getUserInfo("userid"))
             var temp : [String:AnyObject] = [:]
             temp = para
             temp["token"] = token

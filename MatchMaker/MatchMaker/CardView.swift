@@ -34,8 +34,10 @@ class CardView: UIView {
             field.keyboardAppearance = UIKeyboardAppearance.Dark
             if i == 1 {
                 self.password = field
+                self.password.text = "123456"
             }else{
                 self.phone = field
+                self.phone.text = "15868869697"
             }
             self.addSubview(field)
         }

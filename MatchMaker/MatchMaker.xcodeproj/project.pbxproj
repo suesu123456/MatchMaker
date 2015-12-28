@@ -24,6 +24,7 @@
 		807BDD1E1C06F3A600B93B7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807BDD1C1C06F3A600B93B7D /* LaunchScreen.storyboard */; };
 		807BDD291C06F3A600B93B7D /* MatchMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD281C06F3A600B93B7D /* MatchMakerTests.swift */; };
 		807BDD341C06F3A600B93B7D /* MatchMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BDD331C06F3A600B93B7D /* MatchMakerUITests.swift */; };
+		808D05631C2D17500068E372 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808D05621C2D17500068E372 /* Socket.swift */; };
 		80A2CFB21C167FFE00DAC07F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */; };
 		80A2CFB51C16851A00DAC07F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A2CFB41C16851A00DAC07F /* String.swift */; };
 		80E252EB1C16D9FB00596EB4 /* SphereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */; };
@@ -99,6 +100,7 @@
 		807BDD2F1C06F3A600B93B7D /* MatchMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		807BDD331C06F3A600B93B7D /* MatchMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMakerUITests.swift; sourceTree = "<group>"; };
 		807BDD351C06F3A600B93B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		808D05621C2D17500068E372 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		80A2CFB11C167FFE00DAC07F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		80A2CFB41C16851A00DAC07F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		80E252EA1C16D9FB00596EB4 /* SphereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				8012BAA11C153B8500223428 /* Colors.swift */,
 				8037E2751C191E3A009559B3 /* NetBase.swift */,
 				80EAE2B11C2157A000297C9E /* NetUrl.swift */,
+				808D05621C2D17500068E372 /* Socket.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				802E7C141C190D6F003D5428 /* LoginViewController.swift in Sources */,
 				807BDD141C06F3A600B93B7D /* AppDelegate.swift in Sources */,
 				80EAE2901C20F76B00297C9E /* DBSphereView.m in Sources */,
+				808D05631C2D17500068E372 /* Socket.swift in Sources */,
 				80EAE2A61C20F7B300297C9E /* ParameterEncoding.swift in Sources */,
 				8012BAA01C1521DF00223428 /* MineCell.swift in Sources */,
 				80EAE2A51C20F7B300297C9E /* MultipartFormData.swift in Sources */,

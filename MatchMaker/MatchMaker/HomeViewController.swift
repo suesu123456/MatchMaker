@@ -15,12 +15,15 @@ class HomeViewController: UINavigationController, menuDelegate {
     var menu: MediumMenu?
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewDidAppear(animated: Bool) {
         if !UserModel.isLogin() {
             let login = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
             self.presentViewController(login, animated: true, completion: nil)
         }
         self.initMenu()
         self.setDelegate()
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

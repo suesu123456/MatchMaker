@@ -425,7 +425,7 @@
         <!--Home View Controller-->
         <scene sceneID="gVZ-bp-R3F">
             <objects>
-                <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" id="9qp-RC-6Ji" customClass="HomeViewController" customModule="MatchMaker" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9qp-RC-6Ji" customClass="HomeViewController" customModule="MatchMaker" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="FFe-h8-8YU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

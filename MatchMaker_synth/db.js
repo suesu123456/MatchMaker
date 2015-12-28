@@ -8,7 +8,7 @@ function login(phone, password, client, response) {
 			return;
 		}
 		console.log(result.rows);
-		response.send(200, result.rows);
+		response.send(200, result.rows[0]);
 		next();
 	})
 }

@@ -19,10 +19,19 @@
     <script src="http://localhost:3009/socket.io/node_modules/socket.io-client/socket.io.js"></script>
 
     <script>
-
+        var socket = io.connect("http://localhost:3008");
+        var from = '2';
+        //新增用户
+         var socketId;
+         socket.emit('newUser',from);
+         socket.on('socketId', function(data){
+            socketId = data;
+            console.log(socketId);
+            
+         });
         $(function(){
 
-            var socket = io.connect("http://localhost:3008");
+            
 
        
 
@@ -50,25 +59,18 @@
 
         
 
-                var from = '2',//$('#user_name').val(),
-
-                    msg  = $('#message').val(),
+                var msg  = $('#message').val(),
 
                     to   = '1',//$('#to').val(),
 
                  $message_list = $('#message_list');
-
-
-
-                 //新增用户
-                 var socketId;
-                 socket.emit('newUser',from);
-                 socket.on('socketId', function(data){
-                    socketId = data;
-                    console.log(socketId);
-                    socket.emit('message',['是的恢复健康水电费教科书的回复',socketId,to]);
-                 });
-
+    socket.emit('message',{
+        fromscId: socketId,
+        fromuserId: '2',
+        fromuserName: 'peach',
+        touserId: to,
+        msg: '是的恢复健康水电费教科书的回复'
+    });
                 //发送消息
                  
 

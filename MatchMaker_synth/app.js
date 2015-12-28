@@ -1,6 +1,7 @@
 var restify = require('restify');
 var server = restify.createServer();
 var pg = require('pg');
+var redis = require('redis');
 var io = require('socket.io')(server.server);
 var staticServer = require('node-static');
 var file = new staticServer.Server('./node_modules');
@@ -60,23 +61,44 @@ server.get('/', function (req, res) {
 		res.end();
 	});
 });
+//redis
+
+var RDS_PORT = 6379,
+	RDS_HOST = '127.0.0.1',
+	RDS_PWD = 'porschev',
+	RDS_OPTS = {},
+	redis_client = redis.createClient(RDS_PORT, RDS_HOST, RDS_OPTS);
+
+redis_client.auth(RDS_PWD, function(){
+	console.log('redis通过认证');
+});
+redis_client.on('connect', function(){
+	console.log('redis connect');
+})
+
+redis_client.on('error', function(error) {
+	console.log(error);
+});
+
+redis_client.on('ready', function(res) {
+	console.log('redis is ready');
+});
 
 //socket
 /*
 	用户对象数组，记录在线用户
  */
 var users = new Array();
-
-
 io.on('connection', function(socket){
 	var socketid = socket.id;
-	
+	console.log('socket connection');
 	socket.on('newUser', function(data){
 		var flag = true;
 		console.log('尝试新增用户' + data);
 		for (var i = 0; i < users.length; i ++) {
 			if (users[i].userId == data) {
 				flag = false;
+				break;
 			}
 		}
 		if (flag) {
@@ -85,6 +107,21 @@ io.on('connection', function(socket){
 			nodeUser.scId = socketid;
 			users.push(nodeUser);
 			console.log('新增了上线用户' + data);
+			//看下redis里面有没有它得未读消息，如果有就发送给他
+			redis_client.hgetall(data, function(err, replys){
+				console.dir(replys);
+				if (err || !replys ){
+					console.log(err);
+					return;
+				}
+
+				for (var i = replys.length - 1; i >= 0; i--) {
+					console.log(replys[i]);
+					//socket.emit('receive', {fromId: replys[1], msg: replys[0], fromName: replys[2]});
+				};
+				//发送成功后删掉redis中得数据
+				//redis_client.del(data);
+			});
 		}
 		socket.emit('socketId', socketid);
 	});
@@ -92,12 +129,27 @@ io.on('connection', function(socket){
 	socket.on('message', function(data){ // msg from to
 		//发送消息
 		var toscocketid;
+		var fromuserid;
 		for (var i = 0; i < users.length; i ++) {
-			if (users[i].userId == data[2]) {
+			if (users[i].userId == data.touserId) {
 				toscocketid = users[i].scId;
-				console.log(data[1] + '要给' + data[2] + '发送消息：' + data[0]);
-				socket.to(toscocketid).emit('receive', data[0]);
+				console.log(data.fromscId + '要给' + data.touserId + '发送消息：' + data.msg);
+				socket.to(toscocketid).emit('receive', {
+					msg: data.msg,
+					fromuserId: data.fromuserId,
+					fromuserName: data.fromuserName
+				});
+				break;
 			}
+			if (users[i].scId == data[1]) {
+				fromuserid = users[i].userId;
+			}
+		}
+		if (!toscocketid) {
+			//该用户不在线，将消息存入redis中，上线之后再发出(接受者的userid, 信息，发送人的userid, )
+			console.log(data.touserId + ',' + data.msg + ',' + data.fromuserId + ',' + data.fromuserName);
+			redis_client.hset(data.touserId, data.msg, [data.fromuserId, data.fromuserName]);
+			redis_client.hset(data.touserId, data.msg + '------', [data.fromuserId, data.fromuserName]);
 		}
 	});
 	socket.on('disconnect', function(){
