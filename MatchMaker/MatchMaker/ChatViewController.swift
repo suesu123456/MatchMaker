@@ -16,26 +16,62 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var keyBoardView: UIView!
     
-    var socket: SocketIOClient!
-    var socketid: String = ""
-    
-    var contentArray = [["peach","你好"],["sue","我"],["peach","你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？"],["peach","helloskfksdhfjksdhfjksdhfjkdshfjkdh"],["peach","你好"],["sue","我"],["peach","你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？"],["peach","helloskfksdhfjksdhfjksdhfjkdshfjkdh"]]
+    var contentArray: [[String]] = []
     var avaWidth: CGFloat = 50 //头像大小
+    var friend: FriendsModel!
+    var userid: Int = 0
+    var username: String = ""
+    var userava: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initData()
+        self.initRecive()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.initViews()
-        self.initSocket()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMsgInChat:", name: "showMsgInChat", object: nil)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func initRecive() {
+        Socket.sharedInstance.socket.on("receive") { (data, ack) -> Void in
+            let json = JSON(data)
+            //通知有消息
+            self.showMsgInChat(json.arrayObject)
+        }
+    }
+    func initData() {
+       
+        userid = UserModel.getUserInfo("userid") as! Int
+        username = UserModel.getUserInfo("name") as! String
+        userava = UserModel.getUserInfo("ava") as! String
+        //先获取本地
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0) , { [weak self]() -> Void in
+            if let weakSelf = self {
+                let result: [MessageModel] = SqlManage().getMessageById(weakSelf.friend.friendid, id: weakSelf.userid)
+                for var model in result {
+                    var arrayTemp: [String] = []
+                    arrayTemp.append(model.fromusername)
+                    arrayTemp.append(model.message)
+                    weakSelf.contentArray.append(arrayTemp)
+                }
+                print(weakSelf.contentArray)
+            }
+            dispatch_async(dispatch_get_main_queue(), { [weak self]() -> Void in
+                if let weakSelf = self {
+                    if weakSelf.contentArray.count > 0 {
+                        weakSelf.tableView.reloadData()
+                    }
+                }
+                })
+            })
     }
     
     func initViews() {
@@ -43,26 +79,37 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 5.0
     }
-    
-    func initSocket() {
-        socket = SocketIOClient(socketURL: "http://localhost:3008", options: [.Log(true), .ForceWebsockets(true)])
-        socket.on("connect") {data, ack in
-            self.socket.emit("newUser", "1")
-            self.socket.on("socketId"){(data, ack) -> Void in
-                self.socketid = String(data)
+    func saveMessage(curMsg: MessageModel) {
+        //先获取本地
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0) , { [weak self]() -> Void in
+            if let weakSelf = self {
+                SqlManage().saveMessage([curMsg])
             }
-        }
-        socket.connect()
-       
-        socket.on("receive") { (data, ack) -> Void in
-            var arrayTemp: [String] = []
-            arrayTemp.append("peach")
-            arrayTemp.append(String(data))
-            
-            self.contentArray.append(arrayTemp)
-            self.tableView.reloadData()
-        }
-        
+            dispatch_async(dispatch_get_main_queue(), { [weak self]() -> Void in
+                if let weakSelf = self {
+                    weakSelf.tableView.reloadData()
+                    let msg: [String: AnyObject] = ["fromscId": Socket.sharedInstance.socketId,
+                        "fromuserId": weakSelf.userid,
+                        "fromuserName": weakSelf.username,
+                        "touserId": weakSelf.friend.friendid,
+                        "tousername": weakSelf.friend.friendname,
+                        "msg": weakSelf.textView.text,
+                        "time": curMsg.time
+                    ]
+                    Socket.sharedInstance.socket.emit("message", msg)
+                    weakSelf.view.endEditing(true)
+                    weakSelf.textView.text = ""
+
+                }
+            })
+        })
+    }
+    func saveFriendsMessage(curMsg: [MessageModel]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0) , { [weak self]() -> Void in
+            if let weakSelf = self {
+                SqlManage().saveMessage(curMsg)
+            }
+        })
 
     }
     //点击了发送消息
@@ -72,18 +119,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return
         }
         var arrayTemp: [String] = []
-        arrayTemp.append("sue")
+        arrayTemp.append(username)
         arrayTemp.append(textView.text)
-
         self.contentArray.append(arrayTemp)
-        self.tableView.reloadData()
-        var to = "2"
-        socket.emit("message", [textView.text, self.socketid, to])
-            
-        self.view.endEditing(true)
-        textView.text = ""
-        
-        
+        let curMsg = MessageModel()
+        curMsg.fromuserid = self.userid
+        curMsg.fromusername = username
+        curMsg.touserid = friend.friendid
+        curMsg.tousername = friend.friendname
+        curMsg.message = textView.text
+        curMsg.time = DateHelper.getTimeMachine()
+        curMsg.hasread = 1
+        self.saveMessage(curMsg)
     }
     //泡泡文本
     func bubbleView(text: String, fromSelf: Bool, position: Int) -> UIView{
@@ -127,8 +174,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return contentArray.count
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let text: [String] = contentArray[indexPath.row]
-        return text[1].heightForStr(14, width: 300) + 44
+        if contentArray.count > 0 {
+            let text: [String] = contentArray[indexPath.row]
+            return text[1].heightForStr(14, width: 300) + 44
+        }else{
+            return 44
+        }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell? = tableView.cellForRowAtIndexPath(indexPath)
@@ -136,22 +187,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "chartCell")
             cell?.selectionStyle = UITableViewCellSelectionStyle.None
         }
-        let text: [String] = contentArray[indexPath.row]
-        //创建头像
-        var photo: UIImageView!
-        if contentArray[indexPath.row][0] == "sue" {
-            photo = UIImageView(frame: CGRectMake(SCREEN_WIDTH - avaWidth - 10, 10, avaWidth, avaWidth))
-            cell?.addSubview(photo)
-            photo.image = UIImage(named: "photo_sue")
-            cell?.addSubview(self.bubbleView(text[1], fromSelf: true, position: 65))
-        }else{
-            photo = UIImageView(frame: CGRectMake(10, 10, avaWidth, avaWidth))
-            cell?.addSubview(photo)
-            photo.image = UIImage(named: "photo_peach")
-            cell?.addSubview(self.bubbleView(text[1], fromSelf: false, position: 65))
+        if contentArray.count > 0 {
+            let text: [String] = contentArray[indexPath.row]
+            //创建头像
+            var photo: UIImageView!
+            if contentArray[indexPath.row][0] == username {
+                photo = UIImageView(frame: CGRectMake(SCREEN_WIDTH - avaWidth - 10, 10, avaWidth, avaWidth))
+                photo.sd_setImageWithURL(NSURL(string: userava), placeholderImage: UIImage())
+                cell?.addSubview(photo)
+                cell?.addSubview(self.bubbleView(text[1], fromSelf: true, position: 65))
+            }else{
+                photo = UIImageView(frame: CGRectMake(10, 10, avaWidth, avaWidth))
+                photo.sd_setImageWithURL(NSURL(string: self.friend.friendava), placeholderImage: UIImage())
+                cell?.addSubview(photo)
+                cell?.addSubview(self.bubbleView(text[1], fromSelf: false, position: 65))
+            }
+            
+            photo.layer.masksToBounds = true
+            photo.layer.cornerRadius = avaWidth / 2
         }
-        photo.layer.masksToBounds = true
-        photo.layer.cornerRadius = avaWidth / 2
         return cell!
     }
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -186,6 +240,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIView.animateWithDuration(duration, delay: 0, options:options, animations: animations, completion: nil)
         }else{
             animations()
+        }
+    }
+    func showMsgInChat(jsonArray: [AnyObject]?) {
+        var flag = false
+        var messages: [MessageModel] = []
+        let array: [AnyObject] = jsonArray![0] as! [AnyObject]
+        for obj in array {
+            contentArray.append([obj["fromuserName"] as! String, obj["msg"] as! String])
+            let json = JSON(obj)
+            let msg: MessageModel = MessageModel()
+            msg.fromuserid = json["fromuserId"].intValue
+            msg.fromusername = json["fromuserName"].stringValue
+            msg.touserid = json["touserId"].intValue
+            msg.tousername = json["touserName"].stringValue
+            msg.time = json["sendtime"].stringValue
+            msg.message = json["msg"].stringValue
+            msg.hasread = 1
+            messages.append(msg)
+            flag = true
+        }
+        if flag {
+            self.tableView.reloadData()
+            self.saveFriendsMessage(messages)
         }
     }
 }

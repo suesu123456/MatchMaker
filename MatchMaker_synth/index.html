@@ -29,6 +29,9 @@
             console.log(socketId);
             
          });
+        socket.on('receive', function (data) {
+            $("#message_list").append('<li>'+data[0].fromuserName+' 说: '+data[0].msg+'</li>');
+        });
         $(function(){
 
             
@@ -63,14 +66,15 @@
 
                     to   = '1',//$('#to').val(),
 
-                 $message_list = $('#message_list');
-    socket.emit('message',{
-        fromscId: socketId,
-        fromuserId: '2',
-        fromuserName: 'peach',
-        touserId: to,
-        msg: '是的恢复健康水电费教科书的回复'
-    });
+                 $message_list = $('#message_list');                
+                socket.emit('message',{
+                    fromscId: socketId,
+                    fromuserId: '2',
+                    fromuserName: 'peach',
+                    touserId: to,
+                    touserName: 'sue',
+                    msg: '是的恢复健康水电费教科书的回复'
+                });
                 //发送消息
                  
 
@@ -78,12 +82,7 @@
 
                  //接收消息
 
-                 socket.on('receive', function (data) {
-
-                    $message_list.append('<li>'+to+'说'+data+'</li><li>');
-
-                 });
-
+                
                  
 
               //    socket.on('sendSid', function (data) {

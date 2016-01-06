@@ -9,7 +9,10 @@
 #ifndef MatchMaker_BridgeHeader_h
 #define MatchMaker_BridgeHeader_h
 
+
 #import "DBSphereView.h"
 #import "CloudView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "FMDB.h"
 
 #endif /* BridgeHeader_h */

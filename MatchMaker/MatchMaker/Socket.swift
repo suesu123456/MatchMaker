@@ -8,6 +8,7 @@
 
 import UIKit
 import Socket_IO_Client_Swift
+import SwiftyJSON
 
 class Socket: NSObject {
     class var sharedInstance : Socket {
@@ -18,6 +19,7 @@ class Socket: NSObject {
         dispatch_once(&Static.onceToken) {
             Static.instance = Socket()
             Static.instance!.initSocket()
+            Static.instance!.getidFromHttp()
         }
         return Static.instance!
     }
@@ -36,13 +38,7 @@ class Socket: NSObject {
                 UserModel.saveSocketId(self.socketId)
             }
         }
-        socket.on("receive") { (data, ack) -> Void in
-            var arrayTemp: [String] = []
-            arrayTemp.append("peach")
-            arrayTemp.append(String(data))
-
-            print(data)
-        }
+       
     }
-
+   
 }

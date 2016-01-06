@@ -108,19 +108,14 @@ io.on('connection', function(socket){
 			users.push(nodeUser);
 			console.log('新增了上线用户' + data);
 			//看下redis里面有没有它得未读消息，如果有就发送给他
-			redis_client.hgetall(data, function(err, replys){
-				console.dir(replys);
-				if (err || !replys ){
-					console.log(err);
-					return;
-				}
-
-				for (var i = replys.length - 1; i >= 0; i--) {
-					console.log(replys[i]);
-					//socket.emit('receive', {fromId: replys[1], msg: replys[0], fromName: replys[2]});
-				};
-				//发送成功后删掉redis中得数据
-				//redis_client.del(data);
+			redis_client.hget("chat_history", data, function (e, v) {
+				var list = [];
+        		if (v) {
+            		list = JSON.parse(v);
+        			socket.emit('receive', list);
+        			//发送成功之后删除该条消息
+        			redis_client.hdel("chat_history", data, function(e, r){});
+        		}
 			});
 		}
 		socket.emit('socketId', socketid);
@@ -130,15 +125,21 @@ io.on('connection', function(socket){
 		//发送消息
 		var toscocketid;
 		var fromuserid;
+		var time = new Date();
+		data["sendtime"] = time.getTime();
+
 		for (var i = 0; i < users.length; i ++) {
 			if (users[i].userId == data.touserId) {
 				toscocketid = users[i].scId;
 				console.log(data.fromscId + '要给' + data.touserId + '发送消息：' + data.msg);
-				socket.to(toscocketid).emit('receive', {
+				socket.to(toscocketid).emit('receive', [{
 					msg: data.msg,
 					fromuserId: data.fromuserId,
-					fromuserName: data.fromuserName
-				});
+					fromuserName: data.fromuserName,
+					touserId: data.touserId,
+					touserName: data.touserName,
+					sendtime: data.sendtime + ''
+				}]);
 				break;
 			}
 			if (users[i].scId == data[1]) {
@@ -148,8 +149,7 @@ io.on('connection', function(socket){
 		if (!toscocketid) {
 			//该用户不在线，将消息存入redis中，上线之后再发出(接受者的userid, 信息，发送人的userid, )
 			console.log(data.touserId + ',' + data.msg + ',' + data.fromuserId + ',' + data.fromuserName);
-			redis_client.hset(data.touserId, data.msg, [data.fromuserId, data.fromuserName]);
-			redis_client.hset(data.touserId, data.msg + '------', [data.fromuserId, data.fromuserName]);
+			saveOfflineMsg(data);
 		}
 	});
 	socket.on('disconnect', function(){
@@ -160,11 +160,23 @@ io.on('connection', function(socket){
 			}
 		}
 	});
-	// socket.on('testtt', function(data){
-	// 	console.log(data);
-	// });
-	// socket.emit('receive', ['peach','hello']);
 });
+
+function saveOfflineMsg(msg) {
+	var list = []
+    redis_client.hget("chat_history", msg.touserId, function (e, v) {
+        if (v) {
+            list = JSON.parse(v);
+        }
+        list.push(msg);
+        console.log('未读消息存进redis-----');
+        console.log(list);
+        var msglist = JSON.stringify(list);
+        redis_client.hset("chat_history", msg.touserId, msglist, function (e, r) {
+        	console.log(r);
+        });
+    });
+}
 
 
 
