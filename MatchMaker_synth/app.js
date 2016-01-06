@@ -132,7 +132,7 @@ io.on('connection', function(socket){
 			if (users[i].userId == data.touserId) {
 				toscocketid = users[i].scId;
 				console.log(data.fromscId + '要给' + data.touserId + '发送消息：' + data.msg);
-				socket.to(toscocketid).emit('receive', [{
+				socket.to(toscocketid).emit('receive_one', [{
 					msg: data.msg,
 					fromuserId: data.fromuserId,
 					fromuserName: data.fromuserName,

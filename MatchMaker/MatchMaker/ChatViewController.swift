@@ -25,15 +25,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initData()
         self.initRecive()
+        self.initData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.initViews()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"keyBoardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMsgInChat:", name: "showMsgInChat", object: nil)
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +39,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     func initRecive() {
-        Socket.sharedInstance.socket.on("receive") { (data, ack) -> Void in
+        Socket.sharedInstance.socket.on("receive_one") { (data, ack) -> Void in
             let json = JSON(data)
             //通知有消息
             self.showMsgInChat(json.arrayObject)
@@ -68,12 +66,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let weakSelf = self {
                     if weakSelf.contentArray.count > 0 {
                         weakSelf.tableView.reloadData()
+                        weakSelf.scrollToBottom()
                     }
                 }
                 })
             })
     }
-    
+    func scrollToBottom() {
+        //滚动至底部
+        if self.tableView.contentSize.height > self.tableView.frame.size.height{
+            let offset = CGPoint(x: 0, y: self.tableView.contentSize.height - self.tableView.frame.size.height)
+            self.tableView.setContentOffset(offset, animated: false)
+        }
+    }
     func initViews() {
         textView.layer.borderColor = UIColor.grayColor().CGColor
         textView.layer.borderWidth = 1.0
@@ -219,7 +224,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let deltaY = keyBoardBounds.size.height
         let animations:(() -> Void) = {
             self.keyBoardView.transform = CGAffineTransformMakeTranslation(0,-deltaY)
-           // self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentSize.height - self.tableView.frame.size.height), animated: true)
         }
         if duration > 0 {
             let options =  UIViewAnimationOptions(rawValue: UInt((userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue << 16))
@@ -227,6 +231,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else{
             animations()
         }
+        self.scrollToBottom()
     }
     func keyBoardWillHide(note:NSNotification)
     {
@@ -241,6 +246,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else{
             animations()
         }
+        self.scrollToBottom()
     }
     func showMsgInChat(jsonArray: [AnyObject]?) {
         var flag = false

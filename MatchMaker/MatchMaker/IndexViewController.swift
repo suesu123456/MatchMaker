@@ -25,17 +25,16 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         userid = UserModel.getUserInfo("userid") as! Int
-        initData()
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableHeaderView = UIView()
         self.tableView.tableFooterView = UIView()
-        //注册一个通知，用于列表时得消息提醒
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showMsgInTable:", name: "showMsgInTable", object: nil)
-        
-        
     }
-
+    override func viewWillAppear(animated: Bool) {
+       initData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -143,49 +142,37 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func showMsgInTable(jsonArray: [AnyObject]?) {
         //将消息存进数据库
         var messages: [MessageModel] = []
-        let array: [AnyObject] = jsonArray![0] as! [AnyObject]
-        for obj in array{
-            let json = JSON(obj)
-            let msg: MessageModel = MessageModel()
-            msg.fromuserid = json["fromuserId"].intValue
-            msg.fromusername = json["fromuserName"].stringValue
-            msg.touserid = json["touserId"].intValue
-            msg.tousername = json["touserName"].stringValue
-            msg.time = json["sendtime"].stringValue
-            msg.message = json["msg"].stringValue
-            msg.hasread = 0
-            messages.append(msg)
+        let array: [AnyObject]? = jsonArray![0] as? [AnyObject]
+        if array != nil{
+            var flag = false
+            for obj in array!{
+                let json = JSON(obj)
+                let msg: MessageModel = MessageModel()
+                msg.fromuserid = json["fromuserId"].intValue
+                msg.fromusername = json["fromuserName"].stringValue
+                msg.touserid = json["touserId"].intValue
+                msg.tousername = json["touserName"].stringValue
+                msg.time = json["sendtime"].stringValue
+                msg.message = json["msg"].stringValue
+                msg.hasread = 0
+                messages.append(msg)
+                // 更新未读消息
+                var k = 0
+                for var obj2 in self.resultArray {
+                    for var i = 0; i < obj2.count; i++ {
+                        if obj2[i].friendid == json["fromuserId"].intValue {
+                            self.resultArray[k][i].hasMsg = self.resultArray[k][i].hasMsg + 1
+                            flag = true
+                        }
+                    }
+                    k++
+                }
+            }
+            SqlManage().saveMessage(messages)
+            if flag {
+                self.tableView.reloadData()
+            }
         }
-        SqlManage().saveMessage(messages)
-        
-//        var flag = false
-//        let json = ns.object as? [AnyObject]
-//        let jsonArray = json![0] as? [AnyObject]
-//        for obj in jsonArray! {
-//            var k = 0
-//            for var obj2 in self.resultArray {
-//                for var i = 0; i < obj2.count; i++ {
-//                    print(obj)
-//                    if String(obj2[i].friendid) == obj["fromuserId"] as! String {
-//                        self.resultArray[k][i].hasMsg = self.resultArray[k][i].hasMsg + 1
-//                        flag = true
-//                    }
-//                }
-//                k++
-//            }
-//        }
-//        if flag {
-//            self.tableView.reloadData()
-//          
-//            
-//            
-//            
-//            
-//            
-//            
-//            
-//            
-//        }
     }
 
 }

@@ -73,6 +73,9 @@ class SqlManage: NSObject {
         self.createMessageTable()
         let sql = "select * from MESSAGE where (fromuserid = ? and touserid = ?) or (fromuserid = ? and touserid = ?) order by time ASC"
         let result: [MessageModel] = SqlBase.sharedInstance.selectFromMessage([NSNumber(integer: id), NSNumber(integer: friendid),NSNumber(integer: friendid), NSNumber(integer: id)], sql: sql)
+        //将信息改为已读
+        let sql2 = "update MESSAGE set hasread = ? where fromuserid = ? and touserid = ?"
+        SqlBase.sharedInstance.update(sql2, model: [NSNumber(integer: 1), NSNumber(integer: friendid), NSNumber(integer: id)])
         return result
     }
 }

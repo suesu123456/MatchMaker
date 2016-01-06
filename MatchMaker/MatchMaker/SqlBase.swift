@@ -69,6 +69,13 @@ class SqlBase: NSObject {
             db.close()
         }
     }
+    func update(sql: String, model: [AnyObject]) {
+        queue.inDatabase { (db) -> Void in
+            db.open()
+            db.executeUpdate(sql, withArgumentsInArray: model)
+            db.close()
+        }
+    }
     func selectFromMessage(para: [AnyObject], sql: String) -> [MessageModel] {
         var resultArray: [MessageModel] = []
         queue.inDatabase { (db) -> Void in
@@ -104,7 +111,14 @@ class SqlBase: NSObject {
                     model.friendname = rs.stringForColumn("friendname")
                     model.friendava = rs.stringForColumn("friendava")
                     model.friendsex = Int(rs.intForColumn("friendsex"))
+                    //获取该好友的未读消息条数
+                    let sql2 = "select COUNT(*) from MESSAGE where fromuserid = ? and touserid = ?"
+                    let rs2 = db.executeQuery(sql2, withArgumentsInArray: [NSNumber(integer: model.friendid), NSNumber(integer: model.userid)])
+                    if rs2.next() {
+                        model.hasMsg = Int(rs2.intForColumnIndex(0))
+                    }
                     resultArray.append(model)
+                    
                 }
             }
             db.close()
