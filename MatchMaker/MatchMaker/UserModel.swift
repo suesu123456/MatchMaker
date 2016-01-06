@@ -55,5 +55,10 @@ class UserModel: NSObject {
         }
         return ""
     }
-
+    static func logout() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(NSNumber(bool: false), forKey: "user_info")
+        defaults.removeObjectForKey("user_info")
+        defaults.synchronize()
+    }
 }

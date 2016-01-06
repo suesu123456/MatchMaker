@@ -24,8 +24,10 @@ class IndexViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !UserModel.isLogin() {
+            return
+        }
         userid = UserModel.getUserInfo("userid") as! Int
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableHeaderView = UIView()

@@ -43,10 +43,15 @@ class HomeViewController: UINavigationController, menuDelegate {
             let mine = self.storyboard?.instantiateViewControllerWithIdentifier("MineViewController") as! MineViewController
             self.setViewControllers([mine], animated: true)
         }
-        menu = MediumMenu(items: [item1, item2, item3], forViewController: self)
+        let item4 = MediumMenuItem(title: "注销") { () -> Void in
+            UserModel.logout()
+            let login = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            self.presentViewController(login, animated: true, completion: nil)
+        }
+        menu = MediumMenu(items: [item1, item2, item3, item4], forViewController: self)
         menu?.titleFont = UIFont(name: "AvenirNext-Regular", size: 18)
-        menu?.height = 250
-        menu?.velocityTreshold = 250
+        menu?.height = 300
+        menu?.velocityTreshold = 300
         menu?.heightForRowAtIndexPath = 50
         menu?.panGestureEnable = true
         menu?.highlighedIndex = 0
